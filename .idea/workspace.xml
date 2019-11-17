@@ -110,7 +110,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -130,8 +130,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="539" />
-    <option name="y" value="118" />
+    <option name="x" value="677" />
+    <option name="y" value="175" />
     <option name="width" value="1579" />
     <option name="height" value="926" />
   </component>
@@ -266,7 +266,7 @@
     <configuration />
   </component>
   <component name="ToolWindowManager">
-    <frame x="539" y="118" width="1579" height="926" extended-state="0" />
+    <frame x="870" y="115" width="1579" height="926" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2230311" />
