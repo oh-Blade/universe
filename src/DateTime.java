@@ -73,6 +73,12 @@ public class DateTime {
         int s = now.get(ChronoField.SECOND_OF_MINUTE);
         System.out.println(s);//34
     }
+
+    private static void handleDateTime(){
+
+    }
+
+
     public static void main(String[] args) {
 
         handleTime();
