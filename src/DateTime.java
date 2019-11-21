@@ -14,11 +14,11 @@ import java.time.temporal.ChronoField;
 public class DateTime {
 
     private static  void handleDate(){
-        //构造指定年月日   2019-11-18
+        //鏋勯�犳寚瀹氬勾鏈堟棩   2019-11-18
         LocalDate of = LocalDate.of(2019, 1, 10);
         System.out.println(of);
 
-        //获取当前日期
+        //鑾峰彇褰撳墠鏃ユ湡
         LocalDate localDate = LocalDate.now();
         String format1 = localDate.format(DateTimeFormatter.BASIC_ISO_DATE);
         System.out.println(format1);//20191118
