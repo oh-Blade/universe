@@ -73,6 +73,10 @@ public class DateTime {
     }
 
     private static void handleDateTime() {
+        //2019-12-12 11:23:18
+        String format = LocalDateTime.now(ZoneId.of("UTC+08:00")).format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        System.out.println(format);
+
         //2019-11-25T16:09:19.054
         LocalDateTime now = LocalDateTime.now();
         System.out.println(now);
