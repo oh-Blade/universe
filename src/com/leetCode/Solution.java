@@ -11,7 +11,7 @@ package com.leetCode;
  * <p>
  * 示例 1:
  * <p>
- * 输入: [2,3,1,1,4]
+ * 输入: [2,3,3,2,4]
  * 输出: true
  * 解释: 我们可以先跳 1 步，从位置 0 到达 位置 1, 然后再从位置 1 跳 3 步到达最后一个位置。
  * 示例 2:
@@ -23,20 +23,22 @@ package com.leetCode;
  * @Date 2019/12/24 8:40 PM
  */
 public class Solution {
-    public boolean canJump(int[] nums) {
-        if (nums.length == 1) {
+    public boolean canJumpFromPosition(int position, int[] nums) {
+        if (position == nums.length - 1) {
             return true;
         }
-        int i = 0;
-        while (i < nums.length) {
-            if (i + nums[i] + 1 == nums.length) {
+
+        int furthestJump = Math.min(position + nums[position], nums.length - 1);
+        for (int nextPosition = position + 1; nextPosition <= furthestJump; nextPosition++) {
+            if (canJumpFromPosition(nextPosition, nums)) {
                 return true;
-            } else if (nums[i] == 0) {
-                return false;
-            } else {
-                i = i + nums[i];
             }
         }
+
         return false;
+    }
+
+    public boolean canJump(int[] nums) {
+        return canJumpFromPosition(0, nums);
     }
 }
