@@ -37,6 +37,7 @@ public class ArrayAndLinkedList {
     public static void initLinkList(int size) {
         long start = System.currentTimeMillis();
         for (int i = 0; i < size; i++) {
+            linkList.add(3,"");
             linkList.add(getRandomString());
         }
         System.out.println("添加" + size + "个元素用时：" + (System.currentTimeMillis() - start));
