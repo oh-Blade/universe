@@ -16,18 +16,43 @@ package com.leetCode;
  * @Date 2020/2/2 8:30 PM
  */
 public class SwapPairs {
+    //迭代
     public ListNode swapPairs(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
+
+        ListNode node = new ListNode(0);
+        node.next = head;
+
+        ListNode t = node;
+
+        while (head != null && head.next != null) {
+            ListNode fir = head;
+            ListNode sec = head.next;
+
+            t.next = sec;
+            fir.next = sec.next;
+            sec.next = fir;
+
+            t = fir;
+            head = fir.next;
         }
 
-        ListNode fir = head;
-        ListNode sec = head.next;
-
-        fir.next = swapPairs(sec.next);
-        sec.next = fir;
-
-        return sec;
+        return node.next;
 
     }
+
+    //递归
+//    public ListNode swapPairs(ListNode head) {
+//        if (head == null || head.next == null) {
+//            return head;
+//        }
+//
+//        ListNode fir = head;
+//        ListNode sec = head.next;
+//
+//        fir.next = swapPairs(sec.next);
+//        sec.next = fir;
+//
+//        return sec;
+//
+//    }
 }
