@@ -41,21 +41,19 @@ public class MyCircularDeque {
      * Adds an item at the front of Deque. Return true if the operation is successful.
      */
     public boolean insertFront(int value) {
-        synchronized (this) {
-            if (size < array.length) {
-                if (size == 0) {
-                    size++;
-                    array[0] = value;
-                    return true;
-                } else {
-                    System.arraycopy(array, 0, array, 1, size);
-                    array[0] = value;
-                    size++;
-                    return true;
-                }
+        if (size < array.length) {
+            if (size == 0) {
+                size++;
+                array[0] = value;
+                return true;
             } else {
-                return false;
+                System.arraycopy(array, 0, array, 1, size);
+                array[0] = value;
+                size++;
+                return true;
             }
+        } else {
+            return false;
         }
     }
 
@@ -63,20 +61,18 @@ public class MyCircularDeque {
      * Adds an item at the rear of Deque. Return true if the operation is successful.
      */
     public boolean insertLast(int value) {
-        synchronized (this) {
-            if (size < array.length) {
-                if (size == 0) {
-                    size++;
-                    array[0] = value;
-                    return true;
-                } else {
-                    array[size] = value;
-                    size++;
-                    return true;
-                }
+        if (size < array.length) {
+            if (size == 0) {
+                size++;
+                array[0] = value;
+                return true;
             } else {
-                return false;
+                array[size] = value;
+                size++;
+                return true;
             }
+        } else {
+            return false;
         }
     }
 
@@ -84,15 +80,12 @@ public class MyCircularDeque {
      * Deletes an item from the front of Deque. Return true if the operation is successful.
      */
     public boolean deleteFront() {
-        synchronized (this) {
-            if (size == 0) {
-                return false;
-            } else {
-                System.arraycopy(array, 1, array, 0, size-1);
-                size--;
-                return true;
-            }
-
+        if (size == 0) {
+            return false;
+        } else {
+            System.arraycopy(array, 1, array, 0, size - 1);
+            size--;
+            return true;
         }
     }
 
