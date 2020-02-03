@@ -91,7 +91,6 @@ PLAN
 NOTES
 TODO
 compiler.xml
-test.java
 
 */src/main/resources/application.properties
 */src/main/resources/electronic-signature.properties
