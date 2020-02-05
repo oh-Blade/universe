@@ -9,6 +9,90 @@ import java.util.*;
  */
 public class Test {
 
+    //前序遍历
+    @org.junit.Test
+    public void preIterator(TreeNode treeNode) {
+        if (treeNode != null) {
+            System.out.println(treeNode.val + " -> ");
+            preIterator(treeNode.left);
+            preIterator(treeNode.right);
+        }
+    }
+
+    //前序遍历
+    public void preIterator2(TreeNode root) {
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        TreeNode node = root;
+        while (node != null || !stack.isEmpty()) {
+            if (node != null) {
+                System.out.print(node.val + " -> ");
+                stack.push(node);
+                node = node.left;
+            } else {
+                TreeNode tem = stack.pop();
+                node = tem.right;
+            }
+        }
+    }
+
+    //中序遍历
+    public void middleIterator(TreeNode root) {
+        if (root != null) {
+            middleIterator(root.left);
+            System.out.print(root.val + " -> ");
+            middleIterator(root.right);
+        }
+    }
+
+    //中序
+    public void middleIterator2(TreeNode root) {
+        Deque<TreeNode> stack = new ArrayDeque<>();
+        TreeNode node = root;
+        while (node != null || !stack.isEmpty()) {
+            if (node != null) {
+                stack.push(node);
+                node = node.left;
+            } else {
+                TreeNode tem = stack.pop();
+                System.out.println(tem.val + " -> ");
+                node = tem.right;
+            }
+        }
+    }
+
+    //后序遍历
+    public void rearIterator(TreeNode root) {
+        if (root != null) {
+            middleIterator(root.left);
+            middleIterator(root.right);
+            System.out.print(root.val + " -> ");
+        }
+    }
+
+    //后序
+    public void rearIterator2(TreeNode root) {
+        TreeNode cur, pre = null;
+
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+
+        while (!stack.empty()) {
+            cur = stack.peek();
+            if ((cur.left == null && cur.right == null) || (pre != null && (pre == cur.left || pre == cur.right))) {
+                System.out.print(cur.val + "->");
+                stack.pop();
+                pre = cur;
+            } else {
+                if (cur.right != null) {
+                    stack.push(cur.right);
+                }
+                if (cur.left != null) {
+                    stack.push(cur.left);
+                }
+            }
+        }
+    }
+
     @org.junit.Test
     public void testDeque() {
         /**
