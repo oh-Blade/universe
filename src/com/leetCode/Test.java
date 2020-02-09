@@ -1,6 +1,13 @@
 package com.leetCode;
 
-import java.util.*;
+import com.TreeNode;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.LinkedHashMap;
+import java.util.Stack;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.SynchronousQueue;
 
 /**
  * @Description TODO
@@ -8,6 +15,17 @@ import java.util.*;
  * @Date 2020/2/3 11:27 PM
  */
 public class Test {
+
+
+    @org.junit.Test
+    public void synchronousQueueQuiz() throws Exception {
+        BlockingQueue<Integer> queue = new SynchronousQueue<>();
+        System.out.print(queue.offer(1) + " ");
+        System.out.print(queue.offer(2) + " ");
+        System.out.print(queue.offer(3) + " ");
+        System.out.print(queue.take() + " ");
+        System.out.println(queue.size());
+    }
 
     //前序遍历
     @org.junit.Test

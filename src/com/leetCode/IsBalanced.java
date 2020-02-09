@@ -1,5 +1,7 @@
 package com.leetCode;
 
+import com.TreeNode;
+
 /**
  * @Description TODO
  * @Author naikuo
