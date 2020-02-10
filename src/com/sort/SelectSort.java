@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 /**
  * @Description 选择排序
- *
+ * 平均时间复杂度/最好/最坏情况都是O(n^2)  空间复杂度O(1)
+ * 稳定性：不稳定
  * @Author naikuo
  * @Date 2020/2/10 3:55 PM
  */
