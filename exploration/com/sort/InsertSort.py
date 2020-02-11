@@ -1,6 +1,7 @@
 #!/usr/bin/python
+# coding=utf-8
 
-#插入排序
+# 插入排序
 def insertionSort(arr):
     for i in range(len(arr)):
         preIndex = i - 1
