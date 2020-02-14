@@ -12,12 +12,12 @@ import java.util.List;
  * 输入: n = 4, k = 3
  * 输出:
  * [
- *   [2,3,4],
- *   [1,2,3],
- *   [1,2,4],
- *   [1,3,4],
+ * [2,3,4],
+ * [1,2,3],
+ * [1,2,4],
+ * [1,3,4],
  * ]
- *
+ * <p>
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/combinations
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
@@ -25,9 +25,9 @@ import java.util.List;
  * @Date 2019/12/7 11:50 PM
  */
 public class Combine {
-    List<List<Integer>> output = new LinkedList();
-    int n;
-    int k;
+    private List<List<Integer>> output = new LinkedList<>();
+    private int n;
+    private int k;
 
     public void backtrack(int first, LinkedList<Integer> curr) {
         // if the combination is done
@@ -40,7 +40,7 @@ public class Combine {
             curr.add(i);
 
             backtrack(i + 1, curr);
-            
+
             curr.removeLast();
         }
     }
@@ -52,11 +52,11 @@ public class Combine {
         return output;
     }
 
-   @Test
-    public void testCombine(){
-       List<List<Integer>> combine = combine(4, 2);
-       System.out.println(combine);
+    @Test
+    public void testCombine() {
+        List<List<Integer>> combine = combine(4, 2);
+        System.out.println(combine);
 
-   }
+    }
 
 }
