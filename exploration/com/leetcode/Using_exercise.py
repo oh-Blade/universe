@@ -38,7 +38,12 @@
 #     l.append(j)
 # print(l)
 
-b = 0
-while b < 19:
-    print(b, end=",")
-    b += 1
+# b = 0
+# while b < 19:
+#     print(b, end=",")
+#     b += 1
+
+if 0 == 0:
+    print("0 is true")
+else:
+    print("0 is false")
