@@ -1,7 +1,5 @@
 package com.hnk.universe.leetCode;
 
-import com.sun.deploy.util.StringUtils;
-
 import java.util.*;
 
 /**
@@ -57,8 +55,6 @@ public class LetterCombinations {
         String[] split = digits.split("");
         String s = phone.get(split[0]);
         List<String> out = Arrays.asList(s.split(""));
-
-        List<String> zu = new ArrayList<>();
 
         for (int i = 1; i < split.length; i++) {
             String aZu = phone.get(split[i]);
