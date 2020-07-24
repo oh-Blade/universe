@@ -4,6 +4,17 @@ plugins {
     id 'maven-publish'
 }
 
+sourceSets {
+    main {
+        scala {
+            srcDirs = ['src/main/scala', 'src/main/java']
+        }
+        java {
+            srcDirs = []
+        }
+    }
+}
+
 repositories {
     mavenLocal()
     maven {
@@ -32,9 +43,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 }
 
-group = 'com.universe'
+group = 'com.hnk'
 version = '1.0-SNAPSHOT'
-sourceCompatibility = '1.7'
+description = 'universe'
 
 publishing {
     publications {
@@ -45,5 +56,8 @@ publishing {
 }
 
 tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+tasks.withType(ScalaCompile) {
     options.encoding = 'UTF-8'
 }

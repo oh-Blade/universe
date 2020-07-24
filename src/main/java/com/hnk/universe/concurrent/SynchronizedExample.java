@@ -1,6 +1,6 @@
 package com.hnk.universe.concurrent;
 
-import com.hnk.universe.future.CanaanCompletableFuture;
+import com.hnk.universe.future.HnkCompletableFuture;
 
 /**
  * @author naikuoh
@@ -11,7 +11,7 @@ public class SynchronizedExample {
     public void testSychronized() throws InterruptedException {
         Object o = new Object();
         synchronized (o) {
-            CanaanCompletableFuture.runAsync(() -> {
+            HnkCompletableFuture.runAsync(() -> {
                 System.out.println("新线程执行");
                 try {
                     Thread.sleep(10000);

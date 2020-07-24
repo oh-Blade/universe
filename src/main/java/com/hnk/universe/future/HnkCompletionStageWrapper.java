@@ -1,7 +1,5 @@
 package com.hnk.universe.future;
 
-import com.canaan.lib.future.FutureConverter;
-
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 
@@ -9,17 +7,17 @@ import java.util.concurrent.ExecutorService;
  * @author naikuoh
  * @DATE 2020/6/12 15:45
  */
-public class CanaanCompletionStageWrapper<T> extends CompletableFuture<T> {
+public class HnkCompletionStageWrapper<T> extends CompletableFuture<T> {
 
     private CompletableFuture<T> delegated;
 
     private ExecutorService executorService = FutureConverter.canaanForkJoinExecutor();
 
-    public CanaanCompletionStageWrapper() {
+    public HnkCompletionStageWrapper() {
         super();
     }
 
-    public CanaanCompletionStageWrapper(CompletableFuture<T> delegated) {
+    public HnkCompletionStageWrapper(CompletableFuture<T> delegated) {
         this.delegated = getWrappedStage(delegated);
         this.delegated.whenCompleteAsync((response, error) -> {
             if (error != null) {
@@ -35,8 +33,8 @@ public class CanaanCompletionStageWrapper<T> extends CompletableFuture<T> {
     }
 
     private CompletableFuture<T> getWrappedStage(CompletableFuture<T> parent) {
-        if (parent instanceof com.canaan.lib.future.CanaanCompletionStageWrapper) {
-            return getWrappedStage(((com.canaan.lib.future.CanaanCompletionStageWrapper) parent).getDelegated());
+        if (parent instanceof HnkCompletionStageWrapper) {
+            return getWrappedStage(((HnkCompletionStageWrapper) parent).getDelegated());
         } else {
             return parent;
         }
