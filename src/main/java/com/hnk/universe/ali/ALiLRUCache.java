@@ -1,6 +1,6 @@
 package com.hnk.universe.ali;
 
-import com.hnk.universe.leetCode.LRUCache;
+import com.hnk.universe.algorithm.LRUCache;
 
 /**
  * @Description 设计和实现一个 LRU(最近最少使用)缓存数据结构，使它应该支 持一下操作:get 和 put。
