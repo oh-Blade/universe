@@ -22,14 +22,21 @@ package com.universe.leetCode;
  * @DATE 2020/7/28 10:19
  */
 public class BinarySearch {
-    public static int search(int[] nums, int target) {
 
-        int length = nums.length;
+    /**
+     * 正序数组
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int searchAsc(int[] nums, int target) {
         int left = 0;
-        int right = length - 1;
+        int right = nums.length - 1;
+        int mid = 0;
 
         while (left <= right) {
-            int mid = ((right - left) >> 1) + left;
+            mid = ((right - left) >> 1) + left;
             if (target < nums[mid]) {
                 right = mid - 1;
             } else if (target > nums[mid]) {
@@ -42,8 +49,34 @@ public class BinarySearch {
         return -1;
     }
 
+    /**
+     * 倒序数组，查找
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int searchDesc(int[] nums, int target) {
+        int right = nums.length - 1;
+        int left = 0;
+        int mid = 0;
+        while (left <= right) {
+            mid = ((right - left) >> 1) + left;
+            if (target == nums[mid]) {
+                return mid;
+            }
+            if (target < nums[mid]) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return -1;
+    }
+
 
     public static void main(String[] args) {
-        System.out.println(search(new int[]{-1, 0, 3, 5, 9, 12}, 2));
+        System.out.println(searchAsc(new int[]{-1, 0, 3, 5, 9, 12}, 2));
+        System.out.println(searchDesc(new int[]{12, 9, 5, 3, 2, 0, -1}, 2));
     }
 }
