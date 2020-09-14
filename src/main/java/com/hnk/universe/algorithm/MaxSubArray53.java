@@ -15,8 +15,19 @@ package com.hnk.universe.algorithm;
  * @Author naikuo
  * @Date 2020/2/3 11:34 AM
  */
-public class MaxSubArray {
+public class MaxSubArray53 {
 
+    /**
+     * 每一个数据都有两个选择，与前面相连或者自己另立门户！
+     * 所以状态转移方程就是这个 dp[i] = Math.max(dp[i - 1] + nums[i],nums[i]);
+     *
+     * 作者：yi-dai-mi-kang-ji-lou
+     * 链接：https://leetcode-cn.com/problems/contiguous-sequence-lcci/solution/chao-ji-jian-dan-de-jie-fa-by-yi-dai-mi-kang-ji-lo/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     * @param nums
+     * @return
+     */
     public static int maxSubArray(int[] nums) {
 
         int currentMax = nums[0];

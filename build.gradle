@@ -15,18 +15,25 @@ sourceSets {
     }
 }
 
-repositories {
-    mavenLocal()
-    maven {
-        url = uri('https://maven.aliyun.com/nexus/content/groups/public')
-    }
-
-    maven {
-        url = uri('https://packages.aliyun.com/maven/repository/2018125-release-UxqUOO/')
-    }
-
-    maven {
-        url = uri('https://packages.aliyun.com/maven/repository/2018125-snapshot-t1ySyD/')
+allprojects {
+    repositories {
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            credentials {
+                username '5f154f317cd41782832e3f93'
+                password 's2OIXwg4Tig['
+            }
+            url 'https://packages.aliyun.com/maven/repository/2018125-release-UxqUOO/'
+        }
+        maven {
+            credentials {
+                username '5f154f317cd41782832e3f93'
+                password 's2OIXwg4Tig['
+            }
+            url 'https://packages.aliyun.com/maven/repository/2018125-snapshot-t1ySyD/'
+        }
     }
 }
 
