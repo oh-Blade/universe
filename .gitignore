@@ -10,7 +10,7 @@ tags
 *.class
 
 # Created by .ignore support plugin (hsz.mobi)
-
+hamcrest-core-1.3.jar
 .gradle
 .gradle/*
 local.properties

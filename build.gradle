@@ -1,0 +1,70 @@
+plugins {
+    id 'java'
+    id 'scala'
+    id 'maven-publish'
+}
+
+sourceSets {
+    main {
+        scala {
+            srcDirs = ['src/main/scala', 'src/main/java']
+        }
+        java {
+            srcDirs = []
+        }
+    }
+}
+
+allprojects {
+    repositories {
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            credentials {
+                username '5f154f317cd41782832e3f93'
+                password 's2OIXwg4Tig['
+            }
+            url 'https://packages.aliyun.com/maven/repository/2018125-release-UxqUOO/'
+        }
+        maven {
+            credentials {
+                username '5f154f317cd41782832e3f93'
+                password 's2OIXwg4Tig['
+            }
+            url 'https://packages.aliyun.com/maven/repository/2018125-snapshot-t1ySyD/'
+        }
+    }
+}
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.11.12'
+
+    compile 'io.netty:netty-all:4.1.9.Final'
+
+    compile 'com.fasterxml.jackson.core:jackson-core:2.11.0'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.11.0'
+    compile 'org.apache.commons:commons-lang3:3.10'
+    compile group: 'com.google.guava', name: 'guava', version: '29.0-jre'
+
+    compile 'junit:junit:4.12'
+}
+
+group = 'com.hnk'
+version = '1.0-SNAPSHOT'
+description = 'universe'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+tasks.withType(ScalaCompile) {
+    options.encoding = 'UTF-8'
+}
