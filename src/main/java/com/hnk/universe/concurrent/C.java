@@ -1,4 +1,4 @@
-package com.concurrent;
+package com.hnk.universe.concurrent;
 
 /**
  * @author naikuoh
