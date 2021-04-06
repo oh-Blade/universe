@@ -47,6 +47,12 @@ dependencies {
     compile 'org.apache.commons:commons-lang3:3.10'
     compile group: 'com.google.guava', name: 'guava', version: '29.0-jre'
 
+    // https://mvnrepository.com/artifact/org.apache.spark/spark-core
+    implementation group: 'org.apache.spark', name: 'spark-core_2.12', version: '3.0.1'
+    // https://mvnrepository.com/artifact/org.apache.spark/spark-streaming
+    compileOnly group: 'org.apache.spark', name: 'spark-streaming_2.12', version: '3.0.1'
+
+
     compile 'junit:junit:4.12'
 }
 
