@@ -9,7 +9,7 @@ package com.hnk.universe.algorithm;
  * <p>
  * 判断你是否能够到达最后一个位置。
  * <p>
- * 示例 1:
+ * 示例 1:反转
  * <p>
  * 输入: [2,3,3,2,4]
  * 输出: true

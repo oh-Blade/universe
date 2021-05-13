@@ -1,4 +1,4 @@
-package com.hnk.universe.ali;
+package com.hnk.universe.algorithm;
 
 import java.util.Arrays;
 
