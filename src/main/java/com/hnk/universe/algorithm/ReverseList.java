@@ -23,7 +23,7 @@ public class ReverseList {
 
     }
 
-    public ListNode reverseList(ListNode head) {
+    public static ListNode reverseList(ListNode head) {
         if (head == null) {
             return null;
         }
@@ -49,30 +49,8 @@ public class ReverseList {
         node1.next = node2;
         node2.next = node3;
         node3.next = node4;
-        ListNode node = ReverseList(node1);
+        ListNode node = reverseList(node1);
         System.out.println(node);
-//        Deque<String> deque = new ArrayDeque<>();
-//        deque.add("a");
-//        deque.add("b");
-//        deque.add("c");
-//        deque.add("d");
-//        deque.forEach(r->{
-//            System.out.println(deque.pop());
-//
-//        });
-
-
-//        for (int i = 0; i < 5; i++) {
-        //peek
-//            System.out.println("i=" + i);
-//            for (int j = 0; j < 5; j++) {
-//                if (j == 3) {
-//                    System.out.println("if:j=" + j);
-//                    break;
-//                }
-//                System.out.println("j=" + j);
-//            }
-//        }
     }
 
 }
