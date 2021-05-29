@@ -1,7 +1,8 @@
 package com.hnk.universe.algorithm;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 /**
  * 描述
@@ -14,18 +15,53 @@ import java.util.List;
  * [1,2,3,4]
  */
 public class GetLeastNumbers {
-    public ArrayList<Integer> GetLeastNumbers_Solution(int[] input, int k) {
-        if (input == null) {
+
+    public static ArrayList<Integer> GetLeastNumbers_Solution(int[] input, int k) {
+        if (input == null || k <= 0) {
             return new ArrayList<>();
         }
         if (k > input.length) {
             return new ArrayList<>();
         }
-        List<Integer> list = new ArrayList<>();
-        for(){
 
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(input[0]);
+        for (int i = 1; i < input.length; i++) {
+            if (i < k) {
+                int n = 0;
+                while (n < list.size() && input[i] > list.get(n)) {
+                    n++;
+                }
+                list.add(n, input[i]);
+            } else {
+                if (input[i] < list.get(k - 1)) {
+                    list.remove(k - 1);
+                    int n = 0;
+                    while (n < list.size() && input[i] > list.get(n)) {
+                        n++;
+                    }
+                    list.add(n, input[i]);
+                }
+            }
         }
-
-
+        return list;
+    }
+    public static ArrayList<Integer> GetLeastNumbersByQueue(int[] input, int k) {
+        ArrayList<Integer> result = new ArrayList<Integer>();
+        int length = input.length;
+        if(k > length || k == 0){
+            return result;
+        }
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(k, Comparator.reverseOrder());
+        for (int j : input) {
+            if (maxHeap.size() != k) {
+                maxHeap.offer(j);
+            } else if (maxHeap.peek() > j) {
+                maxHeap.poll();
+                maxHeap.offer(j);
+            }
+        }
+        result.addAll(maxHeap);
+        return result;
     }
 }
