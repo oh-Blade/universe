@@ -1,11 +1,8 @@
 package com.hnk.universe.netty;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ByteBufUtil;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import org.apache.commons.lang3.StringUtils;
+import io.netty.handler.timeout.IdleStateEvent;
 
 /**
  * @author naikuoh
@@ -15,30 +12,32 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
-        ByteBuf bb = (ByteBuf) msg;
-        bb.markReaderIndex();
-        ctx.channel().metadata();
-        System.out.println(ctx.channel().remoteAddress());
-        System.out.println("Server received: " + ByteBufUtil.hexDump(bb.readBytes(bb.readableBytes())));
-//        bb.resetReaderIndex();
-
-        ByteBuf byteBuf = Unpooled.copiedBuffer("msg".getBytes());
-
+        System.out.println("--------");
+        System.out.println(msg);
 
     }
 
-    public static void main(String[] args) {
-        String property = System.getProperty("line.separator");
-        String str = null;
-        if(StringUtils.endsWith(str,System.getProperty("line.separator"))){
-            System.out.println(">>>>>>>");
-        }else {
-            System.out.println("<<<<<<<<<");
+    @Override
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+        IdleStateEvent event = (IdleStateEvent)evt;
 
+        String eventType = null;
+        switch (event.state()){
+            case READER_IDLE:
+                eventType = "读空闲";
+                break;
+            case WRITER_IDLE:
+                eventType = "写空闲";
+                // 不处理
+                break;
+            case ALL_IDLE:
+                eventType ="读写空闲";
+                // 不处理
+                break;
         }
+        System.out.println(ctx.channel().remoteAddress() + "超时事件：" +eventType);
     }
-
-//    @Override
+    //    @Override
 //    public void channelReadComplete(ChannelHandlerContext ctx) {
 //        ctx.writeAndFlush(Unpooled.EMPTY_BUFFER)
 //                .addListener(ChannelFutureListener.CLOSE);

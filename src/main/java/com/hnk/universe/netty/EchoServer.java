@@ -9,22 +9,18 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.CharsetUtil;
 
 import java.net.InetSocketAddress;
+import java.util.concurrent.TimeUnit;
 
-/**
- * @author naikuoh
- * @DATE 2020/5/28 14:04
- */
 public class EchoServer {
     private int port;
 
     public EchoServer(int port) {
         this.port = port;
     }
-
-    //https://www.infoq.cn/article/netty-server-create
 
     public void start() throws Exception {
         EventLoopGroup group = new NioEventLoopGroup();
@@ -37,15 +33,13 @@ public class EchoServer {
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
                             ch.pipeline()
+                                    .addLast(new IdleStateHandler(5,8,0, TimeUnit.SECONDS))
                                     .addLast("encoder", new StringEncoder(CharsetUtil.US_ASCII))
-                                    .addLast("decoder", new StringDecoder(CharsetUtil.US_ASCII))
-                                    .addLast(new EchoServerHandler());
+                                    .addLast("decoder", new StringDecoder(CharsetUtil.US_ASCII));
                         }
                     });
-            // 绑定端口，开始接收连接
             ChannelFuture f = b.bind().sync();
             System.out.println("Server start listen at " + port);
-            // 等待服务器socket关闭
             f.channel().closeFuture().sync();
         } finally {
             group.shutdownGracefully();
