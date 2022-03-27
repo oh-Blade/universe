@@ -23,7 +23,7 @@ public class RecursiveDirectory {
         File file = FileUtil.file("shop.csv");
         FileAppender appender = new FileAppender(file, 16, true);
         for (String s : list) {
-          appender.append(s.substring(25).replaceAll("\\\",",","));
+          appender.append(s.substring(25).replaceAll("\\\\",","));
         }
         appender.flush();
 
