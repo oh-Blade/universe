@@ -1,18 +1,6 @@
 plugins {
     id 'java'
-    id 'scala'
     id 'maven-publish'
-}
-
-sourceSets {
-    main {
-        scala {
-            srcDirs = ['src/main/scala', 'src/main/java']
-        }
-        java {
-            srcDirs = []
-        }
-    }
 }
 
 allprojects {
@@ -38,8 +26,6 @@ allprojects {
 }
 
 dependencies {
-    compile 'org.scala-lang:scala-library:2.11.12'
-
     compile 'io.netty:netty-all:4.1.9.Final'
 
     compile 'com.fasterxml.jackson.core:jackson-core:2.11.0'
